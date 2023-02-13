@@ -10,7 +10,7 @@ us-west-1
 ###  Table 1.1 Summary
 | Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EC2 instance | Running Flask App | t3.medium  |  instances | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
+| EC2 instance | Running Flask App | t3.medium  |  3 instances | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 |  Kubernetes cluster | For monitoring stack | NA | 2 nodes | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 | Load balancer | Load balancer for the website | NA  | 1 | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 | S3 buckets | S3 buckets storage | NA | 2 | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
@@ -28,10 +28,6 @@ The EC2 instances run the Flask App. 2 SSH key pairs to ssh in the EC2 servers. 
 ## DR Plan
 ### Pre-Steps:
 List steps you would perform to setup the infrastructure in the other region. It doesn't have to be super detailed, but high-level should suffice.
-First I would perform steps to make the application HA:
-- Change from 2 db node to 3 nodes.
-- Change from 2 K8s nodes cluster to 3 K8s nodes cluster.
-Then make sure to run application in multiple regions, for this we use IAC in terraform
 Use DNS for DB name
 For DB's try to use automatic failover to avoid any downtime. 
 Make sure entire infrastructure is set up in both regions. 
