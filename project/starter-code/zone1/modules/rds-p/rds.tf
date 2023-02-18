@@ -48,6 +48,8 @@ resource "aws_rds_cluster" "udacity_cluster" {
   storage_encrypted        = false
   depends_on = [aws_rds_cluster_parameter_group.cluster_pg]
   backup_retention_period  = 5
+  replication_source_identifier   = var.primary_db_cluster_arn
+  source_region            = "us-east-2"
 }
 
 output "db_cluster_arn" {
